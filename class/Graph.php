@@ -17,12 +17,16 @@ class Graph
     public function addNode(string $node)
     {
         $this->edges[$node] = [];
+
+        return $this;
     }
 
     public function addEdge(string $node1, string $node2, string $length)
     {
         $this->edges[$node1][$node2] = $length;
         $this->edges[$node2][$node1] = $length;
+
+        return $this;
     }
 
     public function getNodes(): iterable
