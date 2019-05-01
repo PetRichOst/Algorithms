@@ -40,17 +40,41 @@ class Walker
 
         $stack = new Stack();
         $stack->put($node);
+        show($path, $stack);
         while (!$stack->isEmpty()){
             $curr = $stack->get();
-            $this->path[$curr] = true;
+            $path[$curr] = true;
 
-            foreach ($this->graph->getEdges($node) as $node2 => $length)
-                if (!$this->path[$node2])
-                    if (!$stack->contains($node2))
-                        $stack->put($node2);
+            foreach ($this->graph->getEdges($curr) as $next => $length)
+                if (!$path[$next])
+                    if (!$stack->contains($next))
+                        $stack->put($next);
+
+            show($path, $stack);
         }
 
-        return $this->path;
+        return $path;
+    }
+
+    public function walk(string $node, Sequence $sequence)
+    {
+        $path = [];
+
+        $sequence->put($node);
+        show($path, $sequence);
+        while (!$sequence->isEmpty()){
+            $curr = $sequence->get();
+            $path[$curr] = true;
+
+            foreach ($this->graph->getEdges($curr) as $next => $length)
+                if (!$path[$next])
+                    if (!$sequence->contains($next))
+                        $sequence->put($next);
+
+            show($path, $sequence);
+        }
+
+        return $path;
     }
 
 }
