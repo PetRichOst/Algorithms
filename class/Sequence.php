@@ -13,7 +13,7 @@ abstract class Sequence
     /**
      * @return null|string
      */
-    abstract public function get(): ?string;;
+    abstract public function get(): ?string;
 
     /**
      * @return bool
