@@ -11,6 +11,10 @@ $stack->put("John");
 $stack->put("Alex");
 $stack->put("Mike");
 
+foreach ($stack->getList() as $item)
+    echo $item . "\n";
+
+echo "========================\n";
 echo $stack->get()."\n";
 echo $stack->get()."\n";
 echo $stack->get()."\n";
