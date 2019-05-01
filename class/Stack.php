@@ -3,7 +3,7 @@
 /**
  * Class Stack
  */
-class Stack
+class Stack extends Sequence
 {
     /** @var Node */
     private $last;
@@ -35,10 +35,10 @@ class Stack
     }
 
     /**
-     * @return bool
+     * @return Node|null
      */
-    public function isEmpty(): bool
+    protected function getFirst(): ?Node
     {
-        return $this->last == null;
+        return $this->last;
     }
 }

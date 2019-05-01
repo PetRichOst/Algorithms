@@ -18,5 +18,10 @@ abstract class Sequence
     /**
      * @return bool
      */
-    abstract public function isEmpty(): bool;
+    public function isEmpty(): bool
+    {
+        return $this->getFirst() == null;
+    }
+
+    abstract protected function getFirst(): ?Node;
 }
