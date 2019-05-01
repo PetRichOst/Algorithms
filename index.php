@@ -5,32 +5,35 @@ include 'class/Sequence.php';
 include 'class/Stack.php';
 include 'class/Queue.php';
 include 'class/Graph.php';
+include 'class/Walker.php';
 
 //Test stack - LIFO
-//$stack = new Stack();
-//$stack->put("John");
-//$stack->put("Alex");
-//$stack->put("Mike");
-//
-//foreach ($stack->getList() as $item)
-//    echo $item . "\n";
-//
-//echo "========================\n";
-//echo $stack->get()."\n";
-//echo $stack->get()."\n";
-//echo $stack->get()."\n";
+/*
+$stack = new Stack();
+$stack->put("John");
+$stack->put("Alex");
+$stack->put("Mike");
+
+foreach ($stack->getList() as $item)
+    echo $item . "\n";
+
+echo "========================\n";
+echo $stack->get()."\n";
+echo $stack->get()."\n";
+echo $stack->get()."\n";
 
 
 //Test queue - FIFO
-//$queue = new Queue();
-//
-//$queue->put("John");
-//$queue->put("Alex");
-//$queue->put("Mike");
-//
-//echo $queue->get()."\n";
-//echo $queue->get()."\n";
-//echo $queue->get()."\n";
+$queue = new Queue();
+
+$queue->put("John");
+$queue->put("Alex");
+$queue->put("Mike");
+
+echo $queue->get()."\n";
+echo $queue->get()."\n";
+echo $queue->get()."\n";
+*/
 
 //Test graph
 $graph = new Graph();
@@ -56,9 +59,15 @@ $graph->addEdge("A", "B", 2)
       ->addEdge("E", "G", 5)
       ->addEdge("F", "G", 8);
 
+$walker = new Walker($graph);
+$walker->walkDepth1("C");
+print_r($walker->path);
+
+/*
 foreach($graph->getNodes() as $node){
     foreach($graph->getEdges($node) as $node2 => $length)
         echo $node."-".$node2."=".$length."\n";
     echo $node. "\n";
     echo "----------------\n";
 }
+*/

@@ -28,14 +28,30 @@ abstract class Sequence
         return $this->getFirst() == null;
     }
 
+    /**
+     * @return iterable
+     */
     public function getList(): iterable
     {
         $curr = $this->getFirst();
 
-        while ($curr != null)
-        {
+        while ($curr != null) {
             yield $curr->getItem();
             $curr = $curr->getNext();
         }
+    }
+
+    /**
+     * @param string $item
+     * @return bool
+     */
+    public function contains(string $item): bool
+    {
+        foreach ($this->getList() as $curr) {
+            if ($curr == $item)
+                return true;
+        }
+
+        return false;
     }
 }
